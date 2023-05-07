@@ -1,0 +1,24 @@
+CXX = g++
+SDL_LIBS = -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
+SDL_INCLUDE_PATH = -I/path/to/SDL2/include
+SDL_LIBRARY_PATH = -L/path/to/SDL2/lib
+
+CXXFLAGS = -Isrc/include $(SDL_INCLUDE_PATH)
+LDFLAGS = -Lsrc/lib $(SDL_LIBRARY_PATH)
+LDLIBS = $(SDL_LIBS)
+
+main: main.cpp
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $< $(LDLIBS) -o $@
+
+
+
+-CXX: biến này sử dụng để thiết lập trình biên dịch c++ mặc định, trong trường hợp này là g++.
+-SDL_LIBS: biến này chứa tên của tất cả các thư viện SDL và các thư viện phụ thuộc của chúng cần được liên kết khi biên dịch chương trình của bạn.
+-SDL_INCLUDE_PATH và SDL_LIBRARY_PATH: biến này chứa đường dẫn tới thư mục chứa các file thư viện SDL.
+-CXXFLAGS: biến này chứa các tùy chọn liên quan đến biên dịch (trong trường hợp này là -Isrc/include và $(SDL_INCLUDE_PATH)), và sử dụng để truyền các tùy chọn này tới trình biên dịch.
+-LDFLAGS: biến này chứa các tùy chọn liên quan đến liên kết (trong trường hợp này là -Lsrc/lib và $(SDL_LIBRARY_PATH)), và sử dụng để truyền các tùy chọn này tới trình liên kết.
+-LDLIBS: biến này chứa các thư viện cần được liên kết, và sử dụng để truyền các thư viện này tới trình liên kết.
+-main: mục tiêu này được sử dụng để tạo ra tập tin thực thi, và nó sử dụng các biến và tùy chọn đã được định nghĩa để biên dịch và liên kết chương trình của bạn.
+-Chú ý rằng, bạn cần phải sửa đổi đường dẫn trong biến SDL_INCLUDE_PATH và SDL_LIBRARY_PATH để trỏ đến thư mục chứa các file thư viện SDL trên máy tính của bạn.
+
+Sau đó, bạn có thể sử dụng lệnh make (mingw32-make) để biên dịch chương trình của bạn với các thư viện SDL đã được liên kết.
